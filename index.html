@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Productivity Command Center</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="app" id="app">
+    <header class="topbar">
+        <div class="brand">
+            <div class="logo">PCC</div>
+            <div>
+                <h1>Productivity Command Center</h1>
+                <p class="sub">Tasks • Habits • Pomodoro • Notes • Stats (saved offline)</p>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button class="btn ghost" id="themeBtn" title="Toggle theme">🌙</button>
+            <button class="btn ghost" id="exportBtn">Export</button>
+            <button class="btn ghost" id="importBtn">Import</button>
+            <input class="search" id="search" placeholder="Search tasks / notes..." />
+        </div>
+    </header>
+
+    <main class="grid">
+        <!-- Tasks -->
+        <section class="card span2">
+            <div class="card__head">
+                <h2>Tasks</h2>
+                <div class="tabs">
+                    <button class="tab active" data-filter="all">All</button>
+                    <button class="tab" data-filter="active">Active</button>
+                    <button class="tab" data-filter="done">Done</button>
+                </div>
+            </div>
+
+            <div class="taskbar">
+                <input id="taskInput" placeholder="Add a task… (e.g. Build PCC v1)" />
+                <select id="taskLane">
+                    <option value="backlog">Backlog</option>
+                    <option value="doing">Doing</option>
+                    <option value="done">Done</option>
+                </select>
+                <button class="btn" id="addTask">Add</button>
+            </div>
+
+            <div class="lanes">
+                <div class="lane" data-lane="backlog">
+                    <div class="lane__title">Backlog</div>
+                    <div class="lane__list" id="laneBacklog"></div>
+                </div>
+                <div class="lane" data-lane="doing">
+                    <div class="lane__title">Doing</div>
+                    <div class="lane__list" id="laneDoing"></div>
+                </div>
+                <div class="lane" data-lane="done">
+                    <div class="lane__title">Done</div>
+                    <div class="lane__list" id="laneDone"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pomodoro -->
+        <section class="card">
+            <div class="card__head">
+                <h2>Pomodoro</h2>
+                <span class="pill" id="pomoMode">Focus</span>
+            </div>
+
+            <div class="pomo">
+                <div class="timer" id="timer">25:00</div>
+                <div class="pomo__row">
+                    <button class="btn" id="pomoStart">Start</button>
+                    <button class="btn ghost" id="pomoPause">Pause</button>
+                    <button class="btn ghost" id="pomoReset">Reset</button>
+                </div>
+                <div class="pomo__row">
+                    <button class="btn ghost" id="setFocus">25/5</button>
+                    <button class="btn ghost" id="setDeep">50/10</button>
+                </div>
+                <div class="meta">
+                    Sessions today: <b id="sessions">0</b>
+                </div>
+            </div>
+        </section>
+
+        <!-- Habits -->
+        <section class="card">
+            <div class="card__head">
+                <h2>Habits</h2>
+                <span class="pill">Streak</span>
+            </div>
+
+            <div class="habits">
+                <div class="habit__add">
+                    <input id="habitInput" placeholder="Add a habit… (e.g. 30min coding)" />
+                    <button class="btn" id="addHabit">Add</button>
+                </div>
+
+                <div class="habit__list" id="habitList"></div>
+            </div>
+        </section>
+
+        <!-- Notes -->
+        <section class="card span2">
+            <div class="card__head">
+                <h2>Notes</h2>
+                <span class="pill">Quick</span>
+            </div>
+
+            <div class="notes">
+                <div class="note__add">
+                    <input id="noteTitle" placeholder="Title" />
+                    <input id="noteText" placeholder="Write a quick note…" />
+                    <button class="btn" id="addNote">Save</button>
+                </div>
+                <div class="note__list" id="noteList"></div>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="card">
+            <div class="card__head">
+                <h2>Stats</h2>
+                <span class="pill">Overview</span>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat__label">Tasks done</div>
+                    <div class="stat__value" id="statDone">0</div>
+                </div>
+                <div class="stat">
+                    <div class="stat__label">Active tasks</div>
+                    <div class="stat__value" id="statActive">0</div>
+                </div>
+                <div class="stat">
+                    <div class="stat__label">Best streak</div>
+                    <div class="stat__value" id="statStreak">0</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat__label">Total tasks</div>
+                    <div class="stat__value" id="statTotal">0</div>
+                </div>
+                <div class="stat">
+                    <div class="stat__label">Completion rate</div>
+                    <div class="stat__value" id="statRate">0%</div>
+                </div>
+                <div class="stat">
+                    <div class="stat__label">Pomodoro today</div>
+                    <div class="stat__value" id="statPomo">0</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="foot">
+        <span>Made by Matvey • PCC v1</span>
+        <span class="muted">Auto-saved (LocalStorage)</span>
+    </footer>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
