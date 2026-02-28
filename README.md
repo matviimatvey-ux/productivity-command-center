@@ -1,5 +1,4 @@
-Live Demo: https://matviimatvey-ux.github.io/
-#Productivity Command Center (PCC)
+Live Demo: https://matviimatvey-ux.github.io/productivity-command-center/
 
 Modern JavaScript Single Page Application for productivity management.
 
